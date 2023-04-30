@@ -4,9 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -16,6 +14,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -49,11 +48,11 @@ class MainActivity : ComponentActivity() {
                         actions = {}
                     )
 
-                    var checkedState = remember { mutableStateOf(true) }
-                    var checkedCapital = remember { mutableStateOf(true) }
-                    var checkedCountry = remember { mutableStateOf(true) }
-                    var checkedPoint = remember { mutableStateOf(true) }
-                    var checkedPeriod = remember { mutableStateOf(true) }
+                    var checkedState = remember { mutableStateOf(false) }
+                    var checkedCapital = remember { mutableStateOf(false) }
+                    var checkedCountry = remember { mutableStateOf(false) }
+                    var checkedPoint = remember { mutableStateOf(false) }
+                    var checkedPeriod = remember { mutableStateOf(false) }
                     Card {
 
 
@@ -64,36 +63,47 @@ class MainActivity : ComponentActivity() {
                                 fontSize = 18.sp,
                                 modifier = Modifier.padding(40.dp)
                             )
-                            Text("Angry")
+                            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center){
+                                Text("Angry")
                                 Checkbox(
                                     checked = checkedState.value,
                                     onCheckedChange = {
                                         checkedState.value = it
                                     })
-                            Text("Happy")
+                            }
+                            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center){
+                                Text("Happy")
                                 Checkbox(
                                     checked = checkedCapital.value,
                                     onCheckedChange = {
                                         checkedCapital.value = it
                                     })
-                            Text("Sad")
+                            }
+                            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center){
+                                Text("Sad")
                                 Checkbox(
                                     checked = checkedCountry.value,
                                     onCheckedChange = {
                                         checkedCountry.value = it
                                     })
-                            Text("Disappointed")
+                            }
+                            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center){
+                                Text("Disappointed")
                                 Checkbox(
-                                checked = checkedPoint.value,
-                                onCheckedChange = {
-                                    checkedPoint.value = it
-                                })
-                            Text("Excited")
-                                 Checkbox(
-                                checked = checkedPeriod.value,
-                                onCheckedChange = {
-                                    checkedPeriod.value = it
-                                })
+                                    checked = checkedPoint.value,
+                                    onCheckedChange = {
+                                        checkedPoint.value = it
+                                    })
+                            }
+                            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center){
+                                Text("Excited")
+                                Checkbox(
+                                    checked = checkedPeriod.value,
+                                    onCheckedChange = {
+                                        checkedPeriod.value = it
+                                    })
+                            }
+
                         }
                     }
                 }
